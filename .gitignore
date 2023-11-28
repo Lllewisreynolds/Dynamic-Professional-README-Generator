@@ -1,1 +1,4 @@
 node_modules
+# Added .DS_Store to gitignore so as to accomodate Mac users
+.DS_Store
+
