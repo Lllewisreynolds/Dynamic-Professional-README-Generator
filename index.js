@@ -39,7 +39,7 @@ const questions = [
         type: 'confirm',
         name: 'confirmInstallation',
         message: 'Is there an installation process required to run this particular application?'
-        hint: 'Are there any Node.js libraries requried for example?'
+        // hint: 'Are there any Node.js libraries requried for example?'
         },
       {
         type: 'input',
@@ -200,15 +200,24 @@ const questions = [
 
 // TODO: Create a function to write README file
 function writeToFile(fileName, data) {
-        fs.writeFile(fileName, data, error => {
-          if (error) {
-            return console.log('Sorry, an error occurred in the process of creating your README file - please see the following error: ' + error);
+        fs.writeFile(fileName, data, err => {
+          if (err) {
+            return console.log('Sorry, an error occurred in the process of creating your README file - please see the following error: ' + err);
+          }
+          else {
+            console.log('README created!')
           }
         })
       }
 
 // TODO: Create a function to initialize app
-function init() {}
+function init() {
+
+return inquirer.prompt(questions)
+.then(displayReponse => {
+return displayReponse;
+    })
+}
 
 // Function call to initialize app
 init();
