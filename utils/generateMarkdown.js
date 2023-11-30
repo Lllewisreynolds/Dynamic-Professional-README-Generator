@@ -36,25 +36,25 @@ function renderLicenseLink(licence) {
   if (licence === 'Apache license 2.0') {
     return '[Link to licence](https://opensource.org/licenses/Apache-2.0)' 
    } 
-   if (licence === 'Boost Software License 1.0') {
+   else if (licence === 'Boost Software License 1.0') {
      return '[Link to licence](https://www.boost.org/LICENSE_1_0.txt)' 
     } 
-    if (licence === 'GNU Affero General Public License v3.0') {
+    else if (licence === 'GNU Affero General Public License v3.0') {
      return '[Link to licence](https://www.gnu.org/licenses/agpl-3.0)' 
     } 
-    if (licence === 'GNU General Public License v3.0') {
+    else if (licence === 'GNU General Public License v3.0') {
      return '[Link to licence](https://www.gnu.org/licenses/gpl-3.0)' 
     } 
-    if (licence === 'GNU Lesser General Public License v3.0') {
+    else if (licence === 'GNU Lesser General Public License v3.0') {
      return '[Link to licence](https://www.gnu.org/licenses/lgpl-3.0)' 
     } 
-    if (licence === 'MIT License') {
+    else if (licence === 'MIT License') {
       return '[Link to licence](https://opensource.org/licenses/MIT)';
     } 
-    if (licence === 'Mozilla Public License 2.0') {
+    else if (licence === 'Mozilla Public License 2.0') {
      return '[Link to licence](https://opensource.org/licenses/MPL-2.0)' 
     } 
-    if (licence === 'The Unlicense') {
+    else if (licence === 'The Unlicense') {
      return '[Link to licence](http://unlicense.org/)'
     } 
    else {
@@ -64,14 +64,27 @@ function renderLicenseLink(licence) {
 
 // TODO: Create a function that returns the license section of README
 // If there is no license, return an empty string
-function renderLicenseSection(licence) {}
+function renderLicenseSection(licence) {
+  if (licence) {
+    return `
+## License
+
+This application has the following licence:
+
+${licence}
+
+${renderLicenseLink(licence)}
+
+`;
+  } else {
+    return '';
+  }
+}
 
 // TODO: Create a function to generate markdown for README
 
 function generateMarkdown(data) {
 
-  // Additional variable created to append both individual user licence choices and optional README sections
-  // licenceChoice not yet created
 
   let markdownTemplate = 
   `# ${data.title}
@@ -87,6 +100,12 @@ ${renderLicenseBadge(data.licence)}
 
 let tableOfContents =
 `## Table of Contents`;
+
+  if (data.licence) {
+    tableOfContents +=
+      `
+  * [Licence](#licence)`;
+};
   if (data.installation) {
     tableOfContents +=
       `
@@ -107,23 +126,23 @@ let tableOfContents =
       `
   * [Testing](#testing)`
   };
-
+  
   markdownTemplate += tableOfContents;
+
+  markdownTemplate += 
+  `
+  `;
+  
+  markdownTemplate += renderLicenseSection(data.licence);
 
   markdownTemplate +=
     `
   * [Questions](#questions)`;
-  markdownTemplate +=
-    `
-  * [Licence](#licence)
-
-    if there is a licence link, render dynamically
-    
-    `;
 
   if (data.installation) {
     markdownTemplate +=
       `
+
 ## Installation
     
   Follow the following steps to properly install this application:
@@ -183,20 +202,6 @@ let tableOfContents =
 
   Email: [${data.email}](mailto:${data.email})`;
   
-  markdownTemplate +=
-    `
-    
-## License
-
-      
-  This application has the following licence:
-
-
-  ${data.licence}
-  
-  ${renderLicenseLink(data.licence)}
-
-`;
 return markdownTemplate;
 }
 
