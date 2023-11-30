@@ -12,7 +12,6 @@ This is a Node.js application, and as such is executed on the command line inter
   * [Usage](#usage)
   * [Contribution](#contribution)
   * [Testing](#testing)
-  * [Demo Video](#demovideo)
   * [Questions](#questions)
   
 ## License
@@ -33,12 +32,7 @@ GNU Affero General Public License v3.0
 
   Instructions for use:
 
-  After cloning the repo and installing npm inquirer, the application can be invoked by using the following command in the CLI:
-  
-  ```bash
-node index.js
-```
-  Follow the Inquirer prompts to enter required fields as well as selecting from any optional additional fields. These dynamically generate the Table of Contents and individual sections of your README. The finalised README will then be created in the ./Generated_README folder.
+  After cloning the repo and installing npm inquirer, the application can be invoked by using the following command in the CLI: ```bash node index.js ``` Follow the Inquirer prompts to enter required fields as well as selecting from any optional additional fields. These dynamically generate the Table of Contents and individual sections of your README. The finalised README will then be created in the ./Generated_README folder.
   
   For more information on how to add screenshots for further instruction clarification, please visit the following website:
   
@@ -56,10 +50,6 @@ node index.js
 
   There is no test information for this application at present.
       
-## Demo Video
-
-[Link to video walkthrough of README generation](https://drive.google.com/file/d/1yPZk7pCe1dfTETmoyLc1l6eFeVm8ehkx/view)
-
 ## Questions
       
   For further questions:
