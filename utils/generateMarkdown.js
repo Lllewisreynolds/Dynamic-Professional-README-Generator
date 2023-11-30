@@ -126,6 +126,12 @@ let tableOfContents =
       `
   * [Testing](#testing)`
   };
+
+  if (data.questions) {
+    tableOfContents +=
+    `
+  * [Questions](#questions)`
+  };
   
   markdownTemplate += tableOfContents;
 
@@ -135,15 +141,9 @@ let tableOfContents =
   
   markdownTemplate += renderLicenseSection(data.licence);
 
-  markdownTemplate +=
-    `
-  * [Questions](#questions)`;
-
   if (data.installation) {
     markdownTemplate +=
-      `
-
-## Installation
+      `## Installation
     
   Follow the following steps to properly install this application:
 
